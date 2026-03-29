@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Viralize Marketing Digital | Estratégia e Design que geram resultados</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fefeff;
+            color: #0f172a;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Animações */
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes slideRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulseBtn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.2), transform 0.7s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* Botão flutuante WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s;
+            animation: glowPulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+        }
+
+        .whatsapp-float a {
+            color: white;
+            font-size: 2.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: "";
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, rgba(99,102,241,0) 80%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            flex: 1.2;
+            animation: fadeUp 0.8s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.12);
+            backdrop-filter: blur(2px);
+            padding: 7px 20px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: #4f46e5;
+            margin-bottom: 24px;
+            letter-spacing: -0.2px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #0f172a 0%, #4338ca 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #6366f1, #c241ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            color: #334155;
+            margin-bottom: 32px;
+            max-width: 550px;
+        }
+
+        .cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(95deg, #4f46e5, #7c3aed);
+            border: none;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 12px 20px -12px rgba(79, 70, 229, 0.5);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #cbd5e1;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #1e293b;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            border-color: #4f46e5;
+            background: rgba(79, 70, 229, 0.04);
+        }
+
+        .hero-image {
+            flex: 0.9;
+            display: flex;
+            justify-content: center;
+            animation: slideRight 0.9s ease;
+        }
+
+        .hero-image i {
+            font-size: 12rem;
+            background: linear-gradient(145deg, #6366f1, #d946ef);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 15px 25px rgba(99,102,241,0.25));
+            animation: float 4s infinite ease-in-out;
+        }
+
+        /* Seções */
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 18px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #475569;
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+            font-size: 1.15rem;
+        }
+
+        /* Cards de Serviços - Visual bem destacado */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 45px;
+            margin-top: 20px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border-radius: 48px;
+            padding: 44px 32px;
+            text-align: center;
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid #eef2ff;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-card:hover {
+            transform: translateY(-14px);
+            border-color: #c7d2fe;
+            box-shadow: 0 30px 45px -12px rgba(79, 70, 229, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3.6rem;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .service-card p {
+            color: #475569;
+            line-height: 1.55;
+            font-size: 1rem;
+        }
+
+        /* Gatilhos Mentais - Cards bem visíveis (sem falsas ofertas) */
+        .triggers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .trigger-card {
+            background: linear-gradient(145deg, #ffffff, #fafcff);
+            border-radius: 42px;
+            padding: 36px 28px;
+            text-align: center;
+            border: 1px solid #eef2ff;
+            transition: all 0.3s ease;
+            box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.06);
+        }
+
+        .trigger-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 32px -14px rgba(79, 70, 229, 0.15);
+            border-color: #cbd5e1;
+        }
+
+        .trigger-icon {
+            font-size: 2.8rem;
+            color: #4f46e5;
+            margin-bottom: 20px;
+        }
+
+        .trigger-badge {
+            background: #eef2ff;
+            color: #4f46e5;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .trigger-card h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .trigger-card p {
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.45;
+        }
+
+        /* Formulário de captura simples - apenas nome e WhatsApp */
+        .capture-simple {
+            background: linear-gradient(135deg, #ffffff, #faf9ff);
+            border-radius: 56px;
+            padding: 52px 40px;
+            box-shadow: 0 35px 55px -20px rgba(0, 0, 0, 0.1);
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid #eef2ff;
+        }
+
+        .capture-simple h3 {
+            font-size: 2.1rem;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .capture-highlight {
+            color: #4f46e5;
+        }
+
+        .simple-form {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            align-items: center;
+            margin: 35px 0 20px;
+        }
+
+        .input-simple {
+            width: 100%;
+            max-width: 460px;
+            position: relative;
+        }
+
+        .input-simple i {
+            position: absolute;
+            left: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 1.2rem;
+        }
+
+        .input-simple input {
+            width: 100%;
+            padding: 17px 22px 17px 54px;
+            border-radius: 70px;
+            border: 1.5px solid #e2e8f0;
+            font-family: inherit;
+            font-size: 1rem;
+            background: #ffffff;
+            transition: 0.25s;
+        }
+
+        .input-simple input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+        }
+
+        .btn-whatsapp-send {
+            background: linear-gradient(95deg, #25D366, #128C7E);
+            border: none;
+            padding: 16px 44px;
+            border-radius: 70px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 12px 20px -12px rgba(37, 211, 102, 0.4);
+            animation: pulseBtn 1.8s infinite;
+        }
+
+        .btn-whatsapp-send:hover {
+            transform: scale(1.02);
+            animation: none;
+        }
+
+        .simple-feedback {
+            margin-top: 12px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* Rodapé limpo */
+        .footer {
+            background: #0b0f1c;
+            color: #e2e8f0;
+            padding: 55px 0 35px;
+            border-radius: 48px 48px 0 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .contact-footer a {
+            background: #25d36620;
+            padding: 12px 28px;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            color: #25d366;
+            border: 1px solid #25d36630;
+            transition: 0.2s;
+        }
+
+        .contact-footer a:hover {
+            background: #25d366;
+            color: #0b0f1c;
+        }
+
+        hr {
+            margin: 40px 0 20px;
+            border-color: #1e293b;
+        }
+
+        @media (max-width: 900px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .hero-image i {
+                font-size: 7rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .capture-simple {
+                padding: 38px 24px;
+            }
+            .whatsapp-float {
+                width: 54px;
+                height: 54px;
+                bottom: 20px;
+                right: 20px;
+            }
+            .whatsapp-float a {
+                font-size: 2rem;
+            }
+            .service-card {
+                padding: 32px 24px;
+            }
+            .service-card h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .container {
+                padding: 0 18px;
+            }
+            .btn-primary, .btn-outline {
+                padding: 12px 24px;
+            }
+            .trigger-card h4 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botão flutuante WhatsApp -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/258869556188?text=Olá%20Viralize%20Marketing!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços." target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Hero -->
+    <div class="container">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <br><span class="hero-badge"><i class="fas fa-chart-line"></i> Resultados reais</span>
+                    <h1>Sua marca <span class="highlight">merece viralizar</span> com Marketing e Design de alto impacto</h1>
+                    <p>Identidade visual, campanhas de tráfego e estratégias que convertem. Atendimento personalizado focado no seu crescimento.</p>
+                    <div class="cta-group">
+                        <button class="btn-primary" id="scrollCaptureBtn"><i class="fab fa-whatsapp"></i> Falar com especialista</button>
+                        <a href="#servicos" class="btn-outline"><i class="fas fa-magic"></i> Ver soluções</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <i class="fas fa-rocket"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Serviços - Cards bem destacados -->
+    <div class="container" id="servicos">
+        <div class="section">
+            <h2 class="section-title animate-on-scroll">Soluções que <span class="highlight">entregam performance</span></h2>
+            <p class="section-sub animate-on-scroll">Estratégia, criatividade e dados para alavancar seu negócio no digital</p>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <i class="fas fa-chart-simple service-icon"></i>
+                    <h3>Marketing Digital</h3>
+                    <p>Tráfego pago (Facebook Ads), SEO, funis de vendas e automação de marketing. Atraia mais clientes qualificados.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <i class="fas fa-pen-fancy service-icon"></i>
+                    <h3>Design Gráfico</h3>
+                    <p>Criação de identidade visual, posts estratégicos, materiais para campanhas e design que gera autoridade e conversão.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <i class="fas fa-hashtag service-icon"></i>
+                    <h3>Social Media</h3>
+                    <p>Gestão de redes sociais, conteúdo viral, engajamento real e planejamento estratégico para fortalecer sua marca.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GATILHOS MENTAIS (sem ofertas falsas, apenas conceitos reais de persuasão) -->
+    <div class="container">
+        <div class="section" style="padding-top: 0;">
+            <h2 class="section-title animate-on-scroll">Por que confiar na <span class="highlight">Viralize</span></h2>
+            <div class="triggers-grid">
+                <div class="trigger-card animate-on-scroll">
+                    <div class="trigger-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="trigger-badge"><i class="fas fa-bolt"></i> ESCASSEZ</div>
+                    <h4>Atendimento exclusivo</h4>
+                    <p>Limitamos o número de clientes por mês para garantir qualidade máxima e atenção personalizada a cada projeto.</p>
+                </div>
+                <div class="trigger-card animate-on-scroll">
+                    <div class="trigger-icon"><i class="fas fa-trophy"></i></div>
+                    <div class="trigger-badge"><i class="fas fa-medal"></i> AUTORIDADE</div>
+                    <h4>+4 anos de expertise</h4>
+                    <p>Dezenas de projetos entregues com aumento comprovado de engajamento e leads. Cases reais de sucesso no mercado.</p>
+                </div>
+                <div class="trigger-card animate-on-scroll">
+                    <div class="trigger-icon"><i class="fas fa-handshake"></i></div>
+                    <div class="trigger-badge"><i class="fas fa-clock"></i> EXCLUSIVIDADE</div>
+                    <h4>Atendimento direto</h4>
+                    <p>Conversa direta com especialistas, sem intermediários. Soluções sob medida para o seu negócio.</p>
+                </div>
+                <div class="trigger-card animate-on-scroll">
+                    <div class="trigger-icon"><i class="fas fa-clock"></i></div>
+                    <div class="trigger-badge"><i class="fas fa-hourglass-half"></i> URGÊNCIA</div>
+                    <h4>Vagas limitadas</h4>
+                    <p>Nossa agenda para novos projetos costuma esgotar rapidamente. Inicie sua conversa hoje mesmo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEÇÃO DE CAPTURA: apenas nome + WhatsApp (sem qualquer oferta ou diagnóstico) -->
+    <div class="container" id="captura-whatsapp">
+        <div class="section">
+            <div class="capture-simple animate-on-scroll">
+                <i class="fab fa-whatsapp" style="font-size: 3rem; color: #25D366; margin-bottom: 12px; display: inline-block;"></i>
+                <h3>Vamos conversar sobre <span class="capture-highlight">o seu projeto</span></h3>
+                <p>Deixe seu nome e inicie uma conversa direta no WhatsApp. Atendimento rápido e personalizado.</p>
+                <div class="simple-form">
+                    <div class="input-simple">
+                        <i class="fas fa-user-astronaut"></i>
+                        <input type="text" id="nomeCliente" placeholder="Digite seu nome completo" autocomplete="name">
+                    </div>
+                    <button id="whatsappRedirectBtn" class="btn-whatsapp-send">
+                        <i class="fab fa-whatsapp fa-lg"></i> Falar agora no WhatsApp
+                    </button>
+                    <div id="simpleFeedback" class="simple-feedback"></div>
+                </div>
+                <p style="font-size: 0.75rem; margin-top: 24px; color: #6c757d;"><i class="fas fa-check-circle"></i> Seu nome será usado para atendimento personalizado. Sem spam, apenas soluções reais.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodapé limpo (apenas contato real, sem redes sociais falsas) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3><i class="fas fa-fire"></i> Viralize Marketing Digital</h3>
+                    <p style="margin-top: 8px;">Estratégia, design e resultados mensuráveis.</p>
+                </div>
+                <div class="contact-footer">
+                    <a href="https://wa.me/258869556188" target="_blank"><i class="fab fa-whatsapp"></i> +258 86 955 6188</a>
+                </div>
+            </div>
+            <hr>
+            <p style="text-align: center; font-size: 0.85rem;">&copy 2026 Viralize Marketing Digital: Transformamos ideias em negócios que viralizam.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animação de scroll
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+        animatedElements.forEach(el => observer.observe(el));
+
+        // Scroll suave até captura
+        const scrollToCapture = () => {
+            const captureSection = document.getElementById('captura-whatsapp');
+            if (captureSection) {
+                captureSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => {
+                    const nomeInput = document.getElementById('nomeCliente');
+                    if (nomeInput) nomeInput.focus();
+                }, 400);
+            }
+        };
+        document.getElementById('scrollCaptureBtn')?.addEventListener('click', scrollToCapture);
+
+        // Lógica do WhatsApp com nome personalizado
+        const whatsappBtn = document.getElementById('whatsappRedirectBtn');
+        const nomeInput = document.getElementById('nomeCliente');
+        const feedbackSpan = document.getElementById('simpleFeedback');
+        const TELEFONE_EMPRESA = '258869556188';
+
+        function formatarNome(nome) {
+            if (!nome || nome.trim() === "") return "Cliente";
+            return nome.trim().split(/\s+/).map(part => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()).join(' ');
+        }
+
+        function gerarLinkWhatsApp(nomeDigitado) {
+            let nomeFormatado = formatarNome(nomeDigitado);
+            let mensagem = `Olá, Viralize Marketing! Me chamo ${nomeFormatado} e gostaria de saber mais sobre os serviços de Marketing Digital e Design Gráfico. Podemos conversar?`;
+            return `https://wa.me/${TELEFONE_EMPRESA}?text=${encodeURIComponent(mensagem)}`;
+        }
+
+        whatsappBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            let nome = nomeInput.value.trim();
+            
+            if (nome === "") {
+                feedbackSpan.innerHTML = '<i class="fas fa-info-circle"></i> Por favor, digite seu nome para um atendimento personalizado.';
+                feedbackSpan.style.color = '#f59e0b';
+                nomeInput.style.borderColor = '#f59e0b';
+                setTimeout(() => { 
+                    feedbackSpan.innerHTML = '';
+                    nomeInput.style.borderColor = '#e2e8f0';
+                }, 3000);
+                return;
+            }
+            
+            if (nome.length < 2) {
+                feedbackSpan.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Nome muito curto, digite seu nome completo.';
+                feedbackSpan.style.color = '#ef4444';
+                setTimeout(() => { feedbackSpan.innerHTML = ''; }, 2500);
+                return;
+            }
+            
+            const linkWhats = gerarLinkWhatsApp(nome);
+            feedbackSpan.innerHTML = `<i class="fas fa-spinner fa-pulse"></i> Redirecionando para o WhatsApp, ${formatarNome(nome)}...`;
+            feedbackSpan.style.color = '#10b981';
+            
+            setTimeout(() => {
+                window.open(linkWhats, '_blank');
+                setTimeout(() => {
+                    feedbackSpan.innerHTML = '';
+                    nomeInput.value = '';
+                }, 800);
+            }, 400);
+        });
+
+        nomeInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                whatsappBtn.click();
+            }
+        });
+
+        if(window.location.hash === '#captura-whatsapp') {
+            setTimeout(() => {
+                const captureDiv = document.getElementById('captura-whatsapp');
+                if(captureDiv) captureDiv.scrollIntoView({ behavior: 'smooth' });
+            }, 200);
+        }
+    </script>
+</body>
+</html>
