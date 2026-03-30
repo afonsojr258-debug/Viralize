@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Viralize Marketing Digital | Estratégia e Design que geram resultados</title>
+    <title>Viralize Marketing Digital | De invisível a influente</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
@@ -14,6 +14,10 @@
             padding: 0;
             box-sizing: border-box;
         }
+        
+        html{
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -23,6 +27,13 @@
             overflow-x: hidden;
         }
 
+        /* Cores principais - #00C4CC */
+        :root {
+            --primary: #00C4CC;
+            --primary-dark: #00a8b0;
+            --primary-light: #e0f7f8;
+        }
+
         /* Animações */
         @keyframes fadeUp {
             0% { opacity: 0; transform: translateY(40px); }
@@ -30,9 +41,9 @@
         }
 
         @keyframes glowPulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
-            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(0, 196, 204, 0.5); }
+            70% { box-shadow: 0 0 0 20px rgba(0, 196, 204, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 196, 204, 0); }
         }
 
         @keyframes float {
@@ -116,7 +127,7 @@
             right: -10%;
             width: 70%;
             height: 70%;
-            background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, rgba(99,102,241,0) 80%);
+            background: radial-gradient(circle, rgba(0,196,204,0.08) 0%, rgba(0,196,204,0) 80%);
             border-radius: 50%;
             z-index: 0;
         }
@@ -138,13 +149,13 @@
 
         .hero-badge {
             display: inline-block;
-            background: rgba(99, 102, 241, 0.12);
+            background: rgba(0,196,204,0.12);
             backdrop-filter: blur(2px);
             padding: 7px 20px;
             border-radius: 40px;
             font-weight: 700;
             font-size: 0.8rem;
-            color: #4f46e5;
+            color: var(--primary);
             margin-bottom: 24px;
             letter-spacing: -0.2px;
         }
@@ -153,19 +164,20 @@
             font-size: 3.5rem;
             font-weight: 800;
             line-height: 1.2;
-            background: linear-gradient(135deg, #0f172a 0%, #4338ca 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
             margin-bottom: 20px;
             font-family: 'Poppins', sans-serif;
+            color: #0f172a;
         }
 
         .highlight {
-            background: linear-gradient(120deg, #6366f1, #c241ff);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+            color: var(--primary);
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--primary);
         }
 
         .hero-text p {
@@ -184,7 +196,7 @@
         }
 
         .btn-primary {
-            background: linear-gradient(95deg, #4f46e5, #7c3aed);
+            background: linear-gradient(95deg, var(--primary), var(--primary-dark));
             border: none;
             padding: 14px 36px;
             border-radius: 60px;
@@ -196,7 +208,7 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            box-shadow: 0 12px 20px -12px rgba(79, 70, 229, 0.5);
+            box-shadow: 0 12px 20px -12px rgba(0,196,204,0.5);
         }
 
         .btn-primary:hover {
@@ -218,8 +230,8 @@
         }
 
         .btn-outline:hover {
-            border-color: #4f46e5;
-            background: rgba(79, 70, 229, 0.04);
+            border-color: var(--primary);
+            background: rgba(0,196,204,0.04);
         }
 
         .hero-image {
@@ -229,13 +241,12 @@
             animation: slideRight 0.9s ease;
         }
 
-        .hero-image i {
-            font-size: 12rem;
-            background: linear-gradient(145deg, #6366f1, #d946ef);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            filter: drop-shadow(0 15px 25px rgba(99,102,241,0.25));
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            max-height: 320px;
+            object-fit: contain;
+            filter: drop-shadow(0 15px 25px rgba(0,196,204,0.25));
             animation: float 4s infinite ease-in-out;
         }
 
@@ -260,7 +271,7 @@
             font-size: 1.15rem;
         }
 
-        /* Cards de Serviços - Visual bem destacado */
+        /* Cards de Serviços */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
@@ -280,16 +291,13 @@
 
         .service-card:hover {
             transform: translateY(-14px);
-            border-color: #c7d2fe;
-            box-shadow: 0 30px 45px -12px rgba(79, 70, 229, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 30px 45px -12px rgba(0,196,204,0.2);
         }
 
         .service-icon {
             font-size: 3.6rem;
-            background: linear-gradient(135deg, #6366f1, #a855f7);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--primary);
             margin-bottom: 24px;
             display: inline-block;
         }
@@ -307,7 +315,135 @@
             font-size: 1rem;
         }
 
-        /* Gatilhos Mentais - Cards bem visíveis (sem falsas ofertas) */
+        /* Portfólio - Galeria de trabalhos */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 35px;
+            margin-top: 30px;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 28px;
+            padding: 25px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #eef2ff;
+            box-shadow: 0 10px 25px -10px rgba(0,0,0,0.05);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 30px -12px rgba(0,196,204,0.2);
+        }
+
+        .portfolio-item img {
+            max-width: 100%;
+            height: 160px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-item p {
+            font-weight: 600;
+            color: #334155;
+            margin-top: 10px;
+        }
+
+        /* Modal para visualização de imagens */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.92);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+        }
+
+        /* Seção do Fundador - Nelson */
+        .founder-section {
+            background: linear-gradient(135deg, #f8fafc, #ffffff);
+            border-radius: 60px;
+            padding: 45px;
+            margin: 40px 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 45px;
+            border: 1px solid #eef2ff;
+        }
+
+        .founder-photo {
+            flex: 0 0 200px;
+            text-align: center;
+        }
+
+        .founder-photo img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: 0 20px 30px -12px rgba(0,196,204,0.3);
+        }
+
+        .founder-text {
+            flex: 1;
+        }
+
+        .founder-text h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .founder-text .title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 18px;
+            font-size: 1rem;
+        }
+
+        .founder-text p {
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* Gatilhos Mentais */
         .triggers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -327,19 +463,19 @@
 
         .trigger-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 32px -14px rgba(79, 70, 229, 0.15);
-            border-color: #cbd5e1;
+            box-shadow: 0 20px 32px -14px rgba(0,196,204,0.15);
+            border-color: var(--primary);
         }
 
         .trigger-icon {
             font-size: 2.8rem;
-            color: #4f46e5;
+            color: var(--primary);
             margin-bottom: 20px;
         }
 
         .trigger-badge {
-            background: #eef2ff;
-            color: #4f46e5;
+            background: var(--primary-light);
+            color: var(--primary);
             padding: 5px 14px;
             border-radius: 40px;
             font-size: 0.7rem;
@@ -361,7 +497,7 @@
             line-height: 1.45;
         }
 
-        /* Formulário de captura simples - apenas nome e WhatsApp */
+        /* Formulário de captura */
         .capture-simple {
             background: linear-gradient(135deg, #ffffff, #faf9ff);
             border-radius: 56px;
@@ -380,7 +516,7 @@
         }
 
         .capture-highlight {
-            color: #4f46e5;
+            color: var(--primary);
         }
 
         .simple-form {
@@ -419,8 +555,8 @@
 
         .input-simple input:focus {
             outline: none;
-            border-color: #6366f1;
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0,196,204,0.12);
         }
 
         .btn-whatsapp-send {
@@ -451,7 +587,7 @@
             font-size: 0.9rem;
         }
 
-        /* Rodapé limpo */
+        /* Rodapé */
         .footer {
             background: #0b0f1c;
             color: #e2e8f0;
@@ -472,6 +608,7 @@
             font-size: 1.9rem;
             font-weight: 800;
             font-family: 'Poppins', sans-serif;
+            color: white;
         }
 
         .contact-footer a {
@@ -506,8 +643,8 @@
             .hero-text h1 {
                 font-size: 2.5rem;
             }
-            .hero-image i {
-                font-size: 7rem;
+            .hero-image img {
+                max-height: 220px;
             }
             .section-title {
                 font-size: 2rem;
@@ -530,6 +667,11 @@
             .service-card h3 {
                 font-size: 1.5rem;
             }
+            .founder-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 35px;
+            }
         }
 
         @media (max-width: 550px) {
@@ -541,6 +683,9 @@
             }
             .trigger-card h4 {
                 font-size: 1.3rem;
+            }
+            .portfolio-item img {
+                height: 120px;
             }
         }
     </style>
@@ -561,14 +706,17 @@
                 <div class="hero-text">
                     <br><span class="hero-badge"><i class="fas fa-chart-line"></i> Resultados reais</span>
                     <h1>Sua marca <span class="highlight">merece viralizar</span> com Marketing e Design de alto impacto</h1>
-                    <p>Identidade visual, campanhas de tráfego e estratégias que convertem. Atendimento personalizado focado no seu crescimento.</p>
+                    <div class="hero-tagline">
+                        <i class="fas fa-brain"></i> ViraLize - De invisível a influente
+                    </div>
+                    <p>Criamos um Marketing que invade Sinapses, com estratégias que antecipam pensamentos. Identidade visual, tráfego e conteúdo que realmente conectam.</p>
                     <div class="cta-group">
                         <button class="btn-primary" id="scrollCaptureBtn"><i class="fab fa-whatsapp"></i> Falar com especialista</button>
                         <a href="#servicos" class="btn-outline"><i class="fas fa-magic"></i> Ver soluções</a>
                     </div>
                 </div>
                 <div class="hero-image">
-                    <i class="fas fa-rocket"></i>
+                    <img src="https://i.postimg.cc/MZYRTSwy/Viralize-logo.png" alt="Viralize Marketing Digital Logo">
                 </div>
             </div>
         </div>
@@ -583,7 +731,7 @@
                 <div class="service-card animate-on-scroll">
                     <i class="fas fa-chart-simple service-icon"></i>
                     <h3>Marketing Digital</h3>
-                    <p>Tráfego pago (Facebook Ads), SEO, funis de vendas e automação de marketing. Atraia mais clientes qualificados.</p>
+                    <p>Tráfego pago (Google/Facebook Ads), SEO, funis de vendas e automação de marketing. Atraia mais clientes qualificados.</p>
                 </div>
                 <div class="service-card animate-on-scroll">
                     <i class="fas fa-pen-fancy service-icon"></i>
@@ -591,15 +739,59 @@
                     <p>Criação de identidade visual, posts estratégicos, materiais para campanhas e design que gera autoridade e conversão.</p>
                 </div>
                 <div class="service-card animate-on-scroll">
-                    <i class="fas fa-hashtag service-icon"></i>
-                    <h3>Social Media</h3>
-                    <p>Gestão de redes sociais, conteúdo viral, engajamento real e planejamento estratégico para fortalecer sua marca.</p>
+                    <i class="fas fa-brain service-icon"></i>
+                    <h3>Copywriting Persuasivo</h3>
+                    <p>Palavras que convertem. Criamos textos que conectam, emocionam e levam à ação. Marketing que fala direto ao inconsciente.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- GATILHOS MENTAIS (sem ofertas falsas, apenas conceitos reais de persuasão) -->
+    <!-- Portfólio - Trabalhos realizados -->
+    <div class="container" id="portfolio">
+        <div class="section">
+            <h2 class="section-title animate-on-scroll">Trabalhos que <span class="highlight">inspiram</span></h2>
+            <p class="section-sub animate-on-scroll">Alguns dos projetos que desenvolvemos para nossos clientes</p>
+            <div class="portfolio-grid" id="portfolioGrid">
+                <div class="portfolio-item" data-img="https://i.postimg.cc/TP8h07xC/nova-colecao-3.jpg">
+                    <img src="https://i.postimg.cc/TP8h07xC/nova-colecao-3.jpg" alt="Nova Coleção">
+                    <p>Nova Coleção</p>
+                </div>
+                <div class="portfolio-item" data-img="https://i.postimg.cc/PxTJsCP3/Esplendor-Logo-(-fundo-transparente).png">
+                    <img src="https://i.postimg.cc/PxTJsCP3/Esplendor-Logo-(-fundo-transparente).png" alt="Esplendor">
+                    <p>Esplendor</p>
+                </div>
+                <div class="portfolio-item" data-img="https://i.postimg.cc/cC5LnTTD/Volttexc-Flyer2.png">
+                    <img src="https://i.postimg.cc/cC5LnTTD/Volttexc-Flyer2.png" alt="Volttexc Flyer">
+                    <p>Volttexc</p>
+                </div>
+                <div class="portfolio-item" data-img="https://i.postimg.cc/152zRC8v/Psique-care-fundo-branco-Prancheta-1.png">
+                    <img src="https://i.postimg.cc/152zRC8v/Psique-care-fundo-branco-Prancheta-1.png" alt="Psique Care">
+                    <p>Psique Care</p>
+                </div>
+                <div class="portfolio-item" data-img="https://i.postimg.cc/sDhrmV2P/Volttexc-Logo-sem-slogan-cor-vermelha-e-branca(fundo-transparente).png">
+                    <img src="https://i.postimg.cc/sDhrmV2P/Volttexc-Logo-sem-slogan-cor-vermelha-e-branca(fundo-transparente).png" alt="Volttexc Logo">
+                    <p>Volttexc Logo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção do Fundador Nelson Gilberto -->
+    <div class="container">
+        <div class="founder-section animate-on-scroll">
+            <div class="founder-photo">
+                <img src="https://i.postimg.cc/KjLm1FkM/20260329-214159.jpg" alt="Nelson Gilberto">
+            </div>
+            <div class="founder-text">
+                <h3>Nelson Gilberto</h3>
+                <div class="title"><i class="fas fa-feather-alt"></i> Copywriter & Estrategista</div>
+                <p>Especialista em criar mensagens que conectam marcas e mentes. Com mais de 4 anos de experiência em Marketing Digital e Design, meu propósito é transformar negócios invisíveis em referências influentes. Cada projeto é único, e minha abordagem combina psicologia do consumo, criatividade e dados para gerar resultados reais.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- GATILHOS MENTAIS -->
     <div class="container">
         <div class="section" style="padding-top: 0;">
             <h2 class="section-title animate-on-scroll">Por que confiar na <span class="highlight">Viralize</span></h2>
@@ -632,7 +824,7 @@
         </div>
     </div>
 
-    <!-- SEÇÃO DE CAPTURA: apenas nome + WhatsApp (sem qualquer oferta ou diagnóstico) -->
+    <!-- SEÇÃO DE CAPTURA: apenas nome + WhatsApp -->
     <div class="container" id="captura-whatsapp">
         <div class="section">
             <div class="capture-simple animate-on-scroll">
@@ -654,22 +846,28 @@
         </div>
     </div>
 
-    <!-- Rodapé limpo (apenas contato real, sem redes sociais falsas) -->
+    <!-- Rodapé -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
                     <h3><i class="fas fa-fire"></i> Viralize Marketing Digital</h3>
-                    <p style="margin-top: 8px;">Estratégia, design e resultados mensuráveis.</p>
+                    <p style="margin-top: 8px;">De invisível a influente</p>
                 </div>
                 <div class="contact-footer">
                     <a href="https://wa.me/258869556188" target="_blank"><i class="fab fa-whatsapp"></i> +258 86 955 6188</a>
                 </div>
             </div>
             <hr>
-            <p style="text-align: center; font-size: 0.85rem;">&copy 2026 Viralize Marketing Digital: Transformamos ideias em negócios que viralizam.</p>
+            <p style="text-align: center; font-size: 0.85rem;">&copy 2026 Viralize Marketing Digital: Criamos estratégias que invadem sinapses e transformam marcas.</p>
         </div>
     </footer>
+
+    <!-- Modal para visualização de imagens -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img id="modalImage" src="" alt="Visualização">
+    </div>
 
     <script>
         // Animação de scroll
@@ -696,6 +894,39 @@
             }
         };
         document.getElementById('scrollCaptureBtn')?.addEventListener('click', scrollToCapture);
+
+        // Modal de portfólio
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.modal-close');
+        
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        portfolioItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.getAttribute('data-img');
+                if (imgSrc) {
+                    modalImg.src = imgSrc;
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        function closeModalFunc() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        closeModal.addEventListener('click', closeModalFunc);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModalFunc();
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModalFunc();
+            }
+        });
 
         // Lógica do WhatsApp com nome personalizado
         const whatsappBtn = document.getElementById('whatsappRedirectBtn');
