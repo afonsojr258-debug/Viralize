@@ -563,6 +563,28 @@
             line-height: 1.45;
         }
 
+        /* ESTILO PARA O CERTIFICADO - imagem mostrando completa */
+        .certificate-container {
+            width: 100%;
+            margin: 30px 0 40px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .certificate-img {
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .certificate-img:hover {
+            transform: scale(1.02);
+        }
+
         /* Formulário de captura */
         .capture-simple {
             background: linear-gradient(135deg, #ffffff, #faf9ff);
@@ -760,19 +782,6 @@
                 height: 120px;
             }
         }
-        
-        .foto{
-            position: static;
-            align-items: center;
-            width: calc(100% - 10%);
-            height: 300px;
-            margin-left: 5%;
-            margin-right: 5%;
-            border-radius: 5%;
-            background: url("https://i.postimg.cc/PqHJK9C5/IMG-20260430-WA0076.jpg") no-repeat;
-            background-size: cover;
-            background-position: center;
-        }
     </style>
 </head>
 <body>
@@ -793,11 +802,6 @@
                     <h1>Sua marca <span class="highlight">merece viralizar</span> com Marketing e Design de alto impacto</h1>
                     <div class="hero-tagline">
                         <i class="fas fa-brain"></i> ViraLize - De invisível a influente
-                    </div>
-                    
-                    <!--foto-->
-                    <div class="foto">
-                        
                     </div>
                     <div class="cta-group">
                         <button class="btn-primary" id="scrollCaptureBtn"><i class="fab fa-whatsapp"></i> Falar com especialista</button>
@@ -913,6 +917,11 @@
     <!-- GATILHOS MENTAIS -->
     <div class="container">
         <div class="section" style="padding-top: 0;">
+            <!-- CERTIFICADO ADICIONADO AQUI - ANTES DO TÍTULO -->
+            <div class="certificate-container animate-on-scroll">
+                <img src="https://i.postimg.cc/SNmY3bpn/IMG-20260516-WA0047.jpg" alt="Certificado da Viralize Marketing Digital" class="certificate-img">
+            </div>
+            
             <h2 class="section-title animate-on-scroll">Por que confiar na <span class="highlight">Viralize</span></h2>
             <div class="triggers-grid">
                 <div class="trigger-card animate-on-scroll">
